@@ -1,15 +1,11 @@
-import { IsInt, IsString, IsDate } from 'class-validator';
+import { IsInt, IsString, IsDate, IsNotEmpty } from 'class-validator';
 
 export class CreateEntryDto {
-  @IsInt()
-  readonly id: number;
-
   @IsString()
+  @IsNotEmpty()
   readonly title: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly description: string;
-
-  @IsDate()
-  readonly createdAt: Date;
 }

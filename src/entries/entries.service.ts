@@ -22,4 +22,8 @@ export class EntriesService {
   findAll(): Promise<Entry[]> {
     return this.entryRepository.find();
   }
+
+  findOne(id: string): Promise<Entry> {
+    return this.entryRepository.findOne(id);
+  }
 }

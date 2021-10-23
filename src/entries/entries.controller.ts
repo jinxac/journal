@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpCode, Param } from '@nestjs/common';
 
 import { Entry } from './entry.entity';
 import { EntriesService } from './entries.service';
@@ -14,7 +14,16 @@ export class EntriesController {
   }
 
   @Post()
+  @HttpCode(201)
   async create(@Body() createEntryDto: CreateEntryDto) {
-    this.entriesService.create(createEntryDto);
+    await this.entriesService.create(createEntryDto);
+    return {
+      message: 'Successfully created the entry',
+    };
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<Entry> {
+    return this.entriesService.findOne(id);
   }
 }
