@@ -4,7 +4,7 @@ import { Entry } from './entry.entity';
 import { EntriesService } from './entries.service';
 import { CreateEntryDto } from './dto/create-entry.dto';
 
-@Controller('entries')
+@Controller('blog')
 export class EntriesController {
   constructor(private readonly entriesService: EntriesService) {}
 
